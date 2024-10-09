@@ -39,21 +39,22 @@ while True:
 
         transferring = int(readCloudVar(project, "transferring"))
         if not (transferring == 0):
+            cloudProject = s2py.scratchConnect(project)
             # Parse the data
             if transferring == 1:
-                en_key = readCloudVar(project, "key", False)
-                en_val = readCloudVar(project, "value", False)
+                en_key = cloudProject.readCloudVar("key")
+                en_val = cloudProject.readCloudVar("value")
                 key = helpers.decode(en_key)
                 val = helpers.decode(en_val)
                 data[project].append({key: val})
-                setCloudVar("transferring", "0", False)
+                cloudProject.setCloudVar('transferring', '0')
             if transferring == 2:
-                en_key = readCloudVar(project, "key", False)
+                en_key = cloudProject.readCloudVar("key")
                 key = helpers.decode(en_key)
                 val = data[project][key]
                 en_val = helpers.encode(val)
-                setCloudVar("value", en_val, False)
-                setCloudVar("transferring", "3", False)
+                cloudProject.setCloudVar('value', en_val)
+                cloudProject.setCloudVar('transferring', '3')
                 while int(readCloudVar(project, "key", False)) == 3:
                     time.sleep(0.1)
 
