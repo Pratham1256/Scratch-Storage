@@ -1,7 +1,7 @@
 import app
 import os
 
-import Scratch2Py from scratch2py
+from scratch2py import Scratch2Py
 s2py = Scratch2Py('pratham_test', os.environ.get('PASS'))
 
 app.keep_alive()
