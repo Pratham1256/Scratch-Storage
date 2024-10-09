@@ -12,7 +12,8 @@ app.keep_alive()
 
 with open("data.json", "r") as file:
     data = json.load(file)
-    cloudProject = None
+
+cloudProject = None
 
 
 def readCloudVar(projectId, key, connect=False):
