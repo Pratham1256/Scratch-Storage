@@ -1,11 +1,11 @@
-
+import app
 import os
 import helpers
 import time
 import json
 from datetime import datetime , timedelta
 
-
+app.keepAlive()
 from scratch2py import Scratch2Py
 
 s2py = Scratch2Py("JethreeH", 'peppapig30')
