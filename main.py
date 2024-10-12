@@ -19,10 +19,14 @@ with open("data.json", "r") as file:
 
 
 def readCloudVar(projectId, key, connect=True):
-    if connect:
-        cloudProject = s2py.scratchConnect(projectId)
-    value = cloudProject.readCloudVar(key)
-    return value
+    try:
+        if connect:
+            cloudProject = s2py.scratchConnect(projectId)
+        value = cloudProject.readCloudVar(key)
+        return value
+    except:
+        time.sleep(1)
+        return readCloudVar(projectId, key)
 
 
 def setCloudVar(projectId, key, value, connect=True):
