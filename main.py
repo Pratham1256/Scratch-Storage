@@ -74,6 +74,8 @@ while True:
                     while int(cloudProject.readCloudVar("transferring")) == 3 and datetime.now() <= now + timedelta(minutes=0.25):
                         time.sleep(0.1)
                     cloudProject.setCloudVar('transferring', '0')
+        except:
+            print('Handled Exception')
 
     if not (data == old_data):
         print('rewrite')
